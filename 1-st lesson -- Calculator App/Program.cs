@@ -1,4 +1,5 @@
-﻿// Приветствие.
+﻿﻿
+// Приветствие.
 Console.WriteLine("Welcome to calculator app!");
 
 while (true)
@@ -9,7 +10,7 @@ while (true)
     int choiceInputInt = Convert.ToInt32(choiceInputStr);
 
     // Проверяем находится ли ввод пользователя в диапазоне. Если нет, пользователь должен ввести цифру снова.
-    if (choiceInputInt < 1 || choiceInputInt > 5)
+    while (choiceInputInt < 1 || choiceInputInt > 5)
     {
         Console.Write("Wrong! The index is out of range. Please try again: ");
         choiceInputStr = Console.ReadLine();
@@ -44,7 +45,14 @@ while (true)
     }
     else if (choiceInputInt == 4)
     {
-        Console.WriteLine($"The result is {Division(num1Int, num2Int)}");
+        if (num2Int == 0)
+        {
+            Console.WriteLine("Error: Division by zero is not allowed.");
+        }
+        else
+        {
+            Console.WriteLine($"The result is {Division(num1Int, num2Int)}");
+        }
     }
 }
 
@@ -66,12 +74,5 @@ int Multiplication(int a, int b)
 
 int Division(int a, int b)
 {
-    // Проверяем деление на ноль.
-    if (b == 0)
-    {
-        System.Console.WriteLine("Error: Division by zero is not allowed.");
-        return 0;
-    }
-        
     return a / b;
 }
